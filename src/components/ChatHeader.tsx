@@ -2,9 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { appLogout } from "../utils/shared";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { LogOut, User, Mail, Share, Home, UserCheck } from "react-feather";
-import useAppStore from "../utils/appStore";
-
+import { LogOut, User, Home, UserCheck } from "react-feather";
 
 const ChatHeader = () => {
   const navigate = useNavigate();
@@ -45,7 +43,7 @@ const ChatHeader = () => {
             {open ? (
               <div className="flyover-menu right-auto top-[50px] rounded-md w-[250px]">
                 <ul>
-                <li
+                  <li
                     className="flex gap-2 cursor-pointer hover:opacity-70 py-1"
                     onClick={() => navigate("/dashboard")}
                   >
