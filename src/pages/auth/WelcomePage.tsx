@@ -1,6 +1,6 @@
 import Button from "../../library/Button";
 import { useNavigate } from "react-router-dom";
-import DashboardImage from "../../assets/dashboard.webp";
+import DashboardImage from "../../assets/DashboardImage.png";
 import GreenCurve from "../../assets/green-curve.svg";
 import Background from "../../assets/bg.svg";
 import PlayerKick from "../../assets/player-kick.png";
