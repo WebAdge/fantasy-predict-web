@@ -19,6 +19,7 @@ const ChatHeader = () => {
       setOpen(false);
     }
   };
+  
 
   useEffect(() => {
     // @ts-ignore
