@@ -2,8 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { appLogout } from "../utils/shared";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { LogOut, User, Mail, Share, Home, UserCheck } from "react-feather";
-import useAppStore from "../utils/appStore";
+import { LogOut, User, Home, UserCheck } from "react-feather";
 
 
 const ChatHeader = () => {
