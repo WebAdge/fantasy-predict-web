@@ -42,3 +42,15 @@ export const fetchLeaderboard = async (competition: string, pool: string) => {
     .catch((e) => next(e));
   return data?.data;
 };
+
+export const getPoolMembers = async (poolId: string, status?: string) => {
+  const { data } = await instance()
+    .get("/v1/pool-members", {
+      params: {
+        poolId,
+        ...(status && { status }),
+      },
+    })
+    .catch(next);
+  return data?.data?.docs;
+};

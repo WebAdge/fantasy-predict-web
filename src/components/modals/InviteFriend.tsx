@@ -27,23 +27,23 @@ const InviteFriend = () => {
     >
       <div className="flex justify-center items-center">
         <div className="mt-5 flex gap-5">
-          <EmailShareButton {...invitationContent["email"]}>
+          <EmailShareButton {...invitationContent('')["email"]}>
             <EmailIcon round size={50} />
           </EmailShareButton>
 
-          <FacebookShareButton {...invitationContent["facebook"]}>
+          <FacebookShareButton {...invitationContent('')["facebook"]}>
             <FacebookIcon round size={50} />
           </FacebookShareButton>
 
-          <LinkedinShareButton {...invitationContent["linkedin"]}>
+          <LinkedinShareButton {...invitationContent('')["linkedin"]}>
             <LinkedinIcon round size={50} />
           </LinkedinShareButton>
 
-          <TwitterShareButton {...invitationContent["twitter"]}>
+          <TwitterShareButton {...invitationContent('')["twitter"]}>
             <TwitterIcon round size={50} />
           </TwitterShareButton>
 
-          <WhatsappShareButton {...invitationContent["whatsapp"]}>
+          <WhatsappShareButton {...invitationContent('')["whatsapp"]}>
             <WhatsappIcon round size={50} />
           </WhatsappShareButton>
         </div>

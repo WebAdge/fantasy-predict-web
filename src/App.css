@@ -131,12 +131,15 @@ body {
 }
 
 .flyover-menu {
-  position: absolute;
-  top: 45px;
-  right: 0;
+  position: absolute;      /* FIX: dropdown should be absolute */
+  top: 45px;               /* Distance from the trigger */
+  right: 0;                /* Align to the right edge */
   background-color: #fff;
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 250px;
+  border-radius: 8px;
+  z-index: 999;            /* Ensure it appears above everything */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .flyover-menu ul {

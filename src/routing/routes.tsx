@@ -20,6 +20,7 @@ import CreateContest from "../pages/contests/CreateContest";
 import WelcomePage from "../pages/auth/WelcomePage";
 import Leaderboard from "../pages/leaderboard";
 import Scores from "../pages/dashboard/Scores";
+import LeaderboardSummary from "../pages/leaderboard/LeaderboardSummary";
 
 
 const PrivateRoutes = () => {
@@ -48,8 +49,9 @@ const PrivateRoutes = () => {
           <Route path="/add-avatar" element={<AddAvatar />} />
           <Route path="/dashboard/pools" element={<Challenges />} />
           <Route path="/create-pool" element={<CreateContest />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/leaderboard/:competition/:contest" element={<Leaderboard />} />
+          <Route path="/leaderboard" element={<LeaderboardSummary />} />
+          <Route path="/leaderboard-details" element={<Leaderboard />} />
+          <Route path="/leaderboard/:competition/:pool" element={<Leaderboard />} />
         </Route>
         {/* routes outside the sidebar or dashboard ends here */}
 

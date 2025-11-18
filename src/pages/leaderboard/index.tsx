@@ -6,15 +6,16 @@ import { useQuery } from "react-query";
 import { IContest } from "../../type";
 import { fetchLeaderboard, getSinglePool } from "../../server/pools";
 
-const Leaderboard = () => {
-  const { competition, contest } = useParams();
 
-  const { data: constestData } = useQuery<IContest>(["contest-single", contest], () =>
-    getSinglePool(contest as string)
+const Leaderboard = () => {
+  const { competition, pool } = useParams();
+
+  const { data: constestData } = useQuery<IContest>(["contest-single", pool], () =>
+    getSinglePool(pool as string)
   );
   const { data, isLoading } = useQuery(
-    ["leaderboard", competition, contest],
-    () => fetchLeaderboard(competition as string, contest as string)
+    ["leaderboard", competition, pool],
+    () => fetchLeaderboard(competition as string, pool as string)
   );
 
   return (

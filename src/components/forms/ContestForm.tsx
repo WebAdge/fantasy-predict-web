@@ -39,8 +39,11 @@ const ContestForm = () => {
   const onFinish = () => {
     setError("");
     if (step === 2) {
+      const array = ['boot', 'card', 'card-pouch', 'corner-kick', 'field', 'flag', 'goal', 'goal-post', 'score', 'shirt', 'winner', 'whistle'];
+      const icon = array[Math.floor(Math.random() * array.length)];
       mutation.mutate({
         ...formData,
+        icon,
         config: {
           ...formData.config,
           amount: formData.config?.amount ? Number(formData.config.amount) : 0,
