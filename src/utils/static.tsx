@@ -185,35 +185,37 @@ export const userMeta: { [key: string]: string } = {
 
 export const tags = ["Age", "Gender", "City", "Profession", "Race"];
 
-export const invitationContent = {
-  email: {
-    subject: "Hey! Have you heard about Cha Cha yet?",
-    body: `It's a fun new approach for personal growth, you can join here: `,
-    url: import.meta.env.VITE_URL,
-    separator: "",
-  },
-  facebook: {
-    quote: `Hey! Have you heard about Cha Cha yet? It's a fun new approach for personal growth, you can join here: `,
-    hashtag: "#chacha #work #jointherevolution",
-    url: import.meta.env.VITE_URL,
-  },
-  linkedin: {
-    title: "Hey there! Have you seen this new web app?",
-    summary: `Hey! Have you heard about Cha Cha yet? It's a fun new approach for personal growth, you can join here: `,
-    source: "Cha Cha",
-    url: import.meta.env.VITE_URL,
-  },
-  twitter: {
-    title: `Hey! Have you heard about Cha Cha yet? It's a fun new approach for personal growth, you can join here: `,
-    via: "Cha Cha",
-    hashtags: ["Cha Cha", "movement"],
-    url: import.meta.env.VITE_URL,
-  },
-  whatsapp: {
-    title: `Hey! Have you heard about Cha Cha yet? It's a fun new approach for personal growth, you can join here: `,
-    url: import.meta.env.VITE_URL,
-    separator: "",
-  },
+export const invitationContent = (code: string) => {
+  return {
+    email: {
+      subject: "Hey! Have you heard about Cha Cha yet?",
+      body: `It's a fun new approach for personal growth, you can join here: `,
+      url: import.meta.env.VITE_URL,
+      separator: "",
+    },
+    facebook: {
+      quote: `Hey! I would like you to join my pool on Fantasy Predict. Use the code ${code}`,
+      hashtag: "#fantasypredict #prediction",
+      url: import.meta.env.VITE_URL,
+    },
+    linkedin: {
+      title: "Join my pool",
+      summary: `Hey! I would like you to join my pool on Fantasy Predict. Use the code ${code}`,
+      source: "Fantasy Predict",
+      url: import.meta.env.VITE_URL,
+    },
+    twitter: {
+      title: `Hey! I would like you to join my pool on Fantasy Predict. Use the code ${code}`,
+      via: "Fantasy Predict",
+      hashtags: ["Fantasy Predict", "prediction"],
+      url: import.meta.env.VITE_URL,
+    },
+    whatsapp: {
+      title: `Hey! I would like you to join my pool on Fantasy Predict. Use the code ${code}`,
+      url: import.meta.env.VITE_URL,
+      separator: "",
+    },
+  }
 };
 
 export const suggestedTopics = {

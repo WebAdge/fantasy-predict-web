@@ -1,6 +1,7 @@
 import { Tag } from "antd";
 import { format } from "date-fns";
 import { currencyFormatter } from "../../utils/shared";
+import Button from "../../library/Button";
 
 export const walletColumn = [
   // {
@@ -52,6 +53,36 @@ export const walletColumn = [
     dataIndex: "createdAt",
     render: (value: string) => (
       <>{format(new Date(value), "dd-MM-yyyy")}</>
+    ),
+  },
+];
+
+export const pendingInvitationColumn = [
+  {
+    title: "Name",
+    key: "name",
+    render: (_value: string, record: any) => (
+      <>{record.firstName} {record.lastName}</>
+    ),
+  },
+  {
+    title: "Action",
+    key: "createdAt",
+    render: () => (
+      <div className="flex gap-5">
+      <Button>Accept</Button>
+      <Button>Decline</Button>
+      </div>
+    ),
+  },
+];
+
+export const invitationColumn = [
+  {
+    title: "Name",
+    key: "name",
+    render: (_value: string, record: any) => (
+      <>{record.firstName} {record.lastName}</>
     ),
   },
 ];

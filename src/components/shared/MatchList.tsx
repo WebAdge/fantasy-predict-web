@@ -16,7 +16,7 @@ type Props = {
     title: string;
     data: IMatch;
   }[];
-  isScore: boolean
+  isScore: boolean;
 };
 
 function MatchList({
@@ -26,37 +26,38 @@ function MatchList({
   matches,
   groupedMatches,
   isFetching,
-  isScore
+  isScore,
 }: Props) {
-
   return (
     <div className="container">
       <div className="w-full flex gap-1">
-      <div className="flex border-[1px] border-[#f2f2f2] gap-2 p-[5px] overflow-x-auto w-[90%] text-center">
-        {competitions
-          ?.sort((a, b) => b.name.localeCompare(a.name))
-          ?.map((league, index) => (
-            <div
-              key={index}
-              onClick={() => setCompetition(index)}
-              style={{
-                backgroundColor:
-                  competition === index ? "#FFA500" : "rgba(0, 0, 0, 0.40)",
-              }}
-              className="text-white border-[0] rounded-[10px] cursor-pointer text-center px-5 py-3 w-[190px] shrink-0"
-            >
-              {league.name}
-            </div>
-          ))}
-      </div>
+        <div className="flex border-[1px] border-[#f2f2f2] gap-2 p-[5px] overflow-x-auto w-[90%] text-center">
+          {competitions
+            ?.map((league, index) => (
+              <div
+                key={index}
+                onClick={() => setCompetition(index)}
+                style={{
+                  backgroundColor:
+                    competition === index ? "#FFA500" : "rgba(0, 0, 0, 0.40)",
+                }}
+                className="text-white border-[0] rounded-[10px] cursor-pointer text-center px-5 py-3 w-[190px] shrink-0"
+              >
+                {league.name}
+              </div>
+            ))}
+        </div>
 
-      <div 
-      onClick={() => {
-        useAppStore.setState({ modal: { open: true, type: "competition" } });
-      }}
-      className="w-[10%] flex justify-center items-center cursor-pointer">
-        <PlusCircle />
-      </div>
+        <div
+          onClick={() => {
+            useAppStore.setState({
+              modal: { open: true, type: "competition" },
+            });
+          }}
+          className="w-[10%] flex justify-center items-center cursor-pointer"
+        >
+          <PlusCircle />
+        </div>
       </div>
 
       {/* Matches Section */}
@@ -117,9 +118,11 @@ function MatchList({
                   </div>
 
                   {/* Prediction */}
-                  {isScore ? <ScoreDisplay item={item} /> :
-                  <ScoreSelection item={item} />
-                  }
+                  {isScore ? (
+                    <ScoreDisplay item={item} />
+                  ) : (
+                    <ScoreSelection item={item} />
+                  )}
 
                   {/* Away Team */}
                   <div className="flex flex-col justify-center items-center">
