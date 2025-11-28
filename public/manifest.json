@@ -1,6 +1,6 @@
 {
-  "name": "Cha Cha",
-  "short_name": "Cha Cha",
+  "name": "Fantasy Predict",
+  "short_name": "FP",
   "icons": [
     {
       "src": "/icon.png",
@@ -8,8 +8,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://app.chacha.nyc/chat",
+  "start_url": "https://fantasy-predict.com",
   "display": "standalone",
-  "background_color": "#1D2D50",
+  "background_color": "#fff",
   "theme_color": "#1D2D50"
 }
