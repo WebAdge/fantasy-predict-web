@@ -14,8 +14,8 @@ const Layout = ({ children }: Props) => {
 
   return (
     <div className="pb-2">
-      <div className="sm:grid sm:place-items-center sm:w-[612px] w-full mx-auto">
-        <div className="flex justify-between sm:w-[612px] w-full bg-blue-950 p-2 rounded-lg text-white">
+      <div className="w-full mx-auto">
+        <div className="flex justify-between w-full bg-blue-950 p-2 rounded-lg text-white">
           <div
             className="cursor-pointer rounded-full bg-white flex gap-[3px] p-3 items-start"
             // onClick={() => setOpen((prev) => !prev)}
@@ -83,7 +83,7 @@ const Layout = ({ children }: Props) => {
             </p>
           </div>
         </div>
-        <div className="sm:w-[522px] sm:mt-10 mt-4 mx-5">{children}</div>
+        <div className="sm:mt-10 mt-4 mx-5">{children}</div>
       </div>
     </div>
   );

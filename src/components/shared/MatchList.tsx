@@ -32,7 +32,7 @@ function MatchList({
   return (
     <div className="container">
       <div className="w-full flex gap-1">
-      <div className="flex border-[1px] border-[#f2f2f2] gap-2 p-[5px] overflow-x-auto w-[90%] text-center">
+      <div className="flex border-[1px] border-[#f2f2f2] gap-2 p-[5px] overflow-x-auto w-[95%] text-center">
         {competitions
           ?.sort((a, b) => b.name.localeCompare(a.name))
           ?.map((league, index) => (

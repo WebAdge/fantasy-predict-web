@@ -64,8 +64,13 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          <div className="">
+          <div className="w-full">
+            <div className="flex justify-center">
+              <div className="sm:w-[612px]">
             <Leaderboard />
+              </div>
+            </div>
+
             <div className="mt-8">
               <MatchList 
               competitions={competitions || []}
