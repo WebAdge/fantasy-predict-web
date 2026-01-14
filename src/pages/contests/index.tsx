@@ -45,8 +45,6 @@ const Challenges = () => {
     }
   })
 
-  console.log(customer);
-
   return (
     <Layout>
       <div className="flex justify-between">
@@ -102,7 +100,7 @@ const Challenges = () => {
                     </p>
                   </div>
 
-                  {String(contest.createdBy) === String(customer._id) ? (
+                  {String(contest.createdBy._id) === String(customer._id) ? (
                     <Button
                       size="small"
                       color="danger"

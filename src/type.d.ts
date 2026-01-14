@@ -272,7 +272,10 @@ export interface IPool extends DefaultAttributes {
     totalMembers: number
     competition: string
     isActive: boolean
-    createdBy: string
+    createdBy: {
+      _id: string;
+      name: string;
+    }
     icon?: string
 }
 
