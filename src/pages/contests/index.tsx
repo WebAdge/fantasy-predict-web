@@ -45,6 +45,8 @@ const Challenges = () => {
     }
   })
 
+  console.log(customer);
+
   return (
     <Layout>
       <div className="flex justify-between">
