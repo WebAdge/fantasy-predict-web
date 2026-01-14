@@ -139,7 +139,7 @@ const ContestForm = () => {
 
             <Form.Item
               name="privacy"
-              label={<p className="text-black font-bold">End Date</p>}
+              label={<p className="text-black font-bold">Privacy</p>}
               rules={[{ required: false, message: "Enter privacy" }]}
             >
               <Select
