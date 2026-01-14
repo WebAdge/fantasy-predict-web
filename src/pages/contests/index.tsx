@@ -61,7 +61,7 @@ const Challenges = () => {
           <Button
             size="small"
             color="orange"
-            onClick={() => navigate("/create-contest")}
+            onClick={() => navigate("/create-pool")}
             className="w-[120px]"
           >
             Create Pool
