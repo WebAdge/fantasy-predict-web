@@ -275,8 +275,37 @@ export interface IPool extends DefaultAttributes {
     createdBy: {
       _id: string;
       name: string;
+      firstName: string;
+      lastName: string;
+      username: string;
     }
     icon?: string
+}
+
+export interface IPoolLeaderboard extends DefaultAttributes {
+    name: string
+    description: string
+    privacy: "public" | "private"
+    config: {
+        amount: number
+        paid: boolean
+        poolSharing?: "first-take-all" | "top-three"
+        endDate?: Date
+        code?: string
+    }
+    totalMembers: number
+    competition: string
+    isActive: boolean
+    createdBy: {
+      _id: string;
+      name: string;
+      firstName: string;
+      lasttName: string;
+      username: string;
+    }
+    icon?: string
+    isCreator: boolean;
+    isMember: boolean;
 }
 
 export interface IPrediction extends DefaultAttributes {

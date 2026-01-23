@@ -22,16 +22,25 @@ export const joinPoolWithCode = async (values: { code: string }) => {
   return data?.data;
 };
 
-export const fetchPools = async (search: string) => {
+export const fetchPools = async (search: string, type: string) => {
   const { data } = await instance()
-    .get("/v1/pools", { params: { name: search } })
+    .get("/v1/pools", {
+      params: { name: search, ...(type && { personal: true }) },
+    })
     .catch((e) => next(e));
   return data?.data?.docs;
 };
 
+export const fetchPoolLeaderboard = async () => {
+  const { data } = await instance()
+    .get("/v1/pools/leadboard/pool")
+    .catch((e) => next(e));
+  return data?.data;
+};
+
 export const getSinglePool = async (id: string) => {
   const { data } = await instance()
-    .get(`/v1/pools/${id}`,)
+    .get(`/v1/pools/${id}`)
     .catch((e) => next(e));
   return data?.data;
 };
@@ -39,6 +48,13 @@ export const getSinglePool = async (id: string) => {
 export const fetchLeaderboard = async (competition: string, pool: string) => {
   const { data } = await instance()
     .get(`/v1/predictions`, { params: { competition, pool } })
+    .catch((e) => next(e));
+  return data?.data;
+};
+
+export const fetchCompetitionLeaderboard = async (competition: string) => {
+  const { data } = await instance()
+    .get(`/v1/predictions/comp-leaderboard`, { params: { competition } })
     .catch((e) => next(e));
   return data?.data;
 };

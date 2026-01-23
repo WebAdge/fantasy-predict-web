@@ -1,6 +1,7 @@
 import { addDays } from "date-fns";
 import { io } from "socket.io-client";
 import axios, { AxiosError } from "axios";
+import { appLogout } from "../utils/shared";
 
 export const instance = (
   baseURL = import.meta.env.VITE_BACKEND_URL,
@@ -59,6 +60,9 @@ export const instance = (
 };
 
 export const next = (e: AxiosError<{ message: string }>) => {
+  if (e.response?.data?.message === "Session expired. Please login again") {
+    appLogout()
+  }
   throw new Error(
     e.response?.data ? e.response.data.message : "Something went wrong"
   );

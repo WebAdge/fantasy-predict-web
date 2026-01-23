@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import MatchList from "../../components/shared/MatchList";
 import { format } from "date-fns";
 import { ICompetition, IMatch } from "../../type";
-import Leaderboard from "../../components/shared/Leaderboard";
 import AddCompetition from "../../components/modals/AddCompetition";
 
 const Home = () => {
@@ -65,11 +64,6 @@ const Home = () => {
       ) : (
         <>
           <div className="w-full">
-            <div className="flex justify-center">
-              <div className="sm:w-[612px]">
-            <Leaderboard />
-              </div>
-            </div>
 
             <div className="mt-8">
               <MatchList 

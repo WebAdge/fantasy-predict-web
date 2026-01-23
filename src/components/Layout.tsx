@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import { Activity, Home, User, Users } from "react-feather";
+import { Activity, Globe, Home, User, Users } from "react-feather";
 import { useQuery } from "react-query";
 import { getWallet } from "../server/wallet";
 
@@ -9,84 +9,130 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  const navigate = useNavigate();
   const { data, isLoading } = useQuery("wallet", getWallet);
 
   return (
     <div className="pb-2">
       <div className="w-full mx-auto">
-        <div className="flex justify-between w-full bg-blue-950 p-2 rounded-lg text-white">
-          <div
-            className="cursor-pointer rounded-full bg-white flex gap-[3px] p-3 items-start"
-            // onClick={() => setOpen((prev) => !prev)}
-            onClick={() => navigate("/dashboard")}
-          >
-            <Home color="#000" className="opacity-80" size={30} />
-          </div>
-          {/* Top navbar */}
-          <div className="sm:flex hidden gap-5 mt-5 justify-center items-center">
-            <p
-              onClick={() => navigate("/dashboard/scores")}
-              className="cursor-pointer hover:underline hover:font-bold"
-            >
-              Scores
-            </p>
-            <p
-              onClick={() => navigate("/dashboard/pools")}
-              className="cursor-pointer hover:underline hover:font-bold"
-            >
-              Pools
-            </p>
-            {/* <p className="cursor-pointer hover:underline hover:font-bold">Pools</p> */}
-          </div>
-          <div className="flex gap-3 mt-2">
-            <div className="flex gap-5">
-              <div
-                className="cursor-pointer "
-                onClick={() => navigate("/profile")}
-              >
-                <User color="#fff" className="mt-3" size={25} />
-              </div>
-
-              <p className="mt-3 font-bold">
-                ₦
-                {isLoading
-                  ? "---"
-                  : Number(data?.balance || 0).toLocaleString()}
-              </p>
-            </div>
-            <div
-              className="p-3 rounded-full text-center bg-blue-800 text-white"
-              onClick={() => navigate("/wallet")}
-            >
-              Deposit
-            </div>
-          </div>
-        </div>
-        <div className="sm:hidden flex gap-5 mt-5 justify-center items-center">
-          <div
-            className="flex gap-2 bg-gray-800 p-3 text-center rounded-full text-white items-center"
-            onClick={() => navigate("/dashboard/scores")}
-          >
-            <Activity color="#fff" size={18} className="" />
-            <p className="cursor-pointer hover:underline hover:font-bold">
-              Scores
-            </p>
-          </div>
-          <div
-            className="flex gap-2 bg-gray-800 p-3 text-center rounded-full text-white items-center"
-            onClick={() => navigate("/dashboard/pools")}
-          >
-            <Users color="#fff" size={18} className="" />
-            <p className="cursor-pointer hover:underline hover:font-bold">
-              Pools
-            </p>
-          </div>
-        </div>
+        <Navbar isLoading={isLoading} data={data} />
         <div className="sm:mt-10 mt-4 mx-5">{children}</div>
+        <Footer />
       </div>
     </div>
   );
 };
 
 export default Layout;
+
+const Footer = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700">
+          <div className="flex justify-around items-center py-3">
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="flex flex-col items-center text-white active:scale-95"
+            >
+              <Home size={22} />
+              <span className="text-xs mt-1">Home</span>
+            </button>
+            <button
+              onClick={() => navigate("/dashboard/scores")}
+              className="flex flex-col items-center text-white active:scale-95"
+            >
+              <Globe size={22} />
+              <span className="text-xs mt-1">Scores</span>
+            </button>
+
+            <button
+              onClick={() => navigate("/dashboard/pools")}
+              className="flex flex-col items-center text-white active:scale-95"
+            >
+              <Users size={22} />
+              <span className="text-xs mt-1">My Pools</span>
+            </button>
+
+            <button
+              onClick={() => navigate("/leaderboard")}
+              className="flex flex-col items-center text-white active:scale-95"
+            >
+              <Activity size={22} />
+              <span className="text-xs mt-1">Leaderboard</span>
+            </button>
+
+            <button
+              onClick={() => navigate("/profile")}
+              className="flex flex-col items-center text-white active:scale-95"
+            >
+              <User size={22} />
+              <span className="text-xs mt-1">Profile</span>
+            </button>
+          </div>
+        </div>
+  )
+}
+
+type NProp = {
+  isLoading: boolean;
+  data: any
+}
+
+const Navbar = ({ isLoading, data }: NProp) => {
+  const navigate = useNavigate();
+  return (
+    <div className="sticky top-0 z-50 w-full">
+  <div className="flex justify-between w-full bg-blue-950 p-2 rounded-lg">
+    {/* Home */}
+    <div
+      className="cursor-pointer rounded-full bg-white flex gap-[3px] p-3 items-start"
+      onClick={() => navigate("/dashboard")}
+    >
+      <p className="font-black italic">FP</p>
+    </div>
+
+    {/* Center Nav (Desktop only) */}
+    <div className="hidden sm:flex gap-5 justify-center items-center">
+      <p
+        onClick={() => navigate("/dashboard/scores")}
+        className="cursor-pointer hover:underline hover:font-bold"
+      >
+        Scores
+      </p>
+      <p
+        onClick={() => navigate("/dashboard/pools")}
+        className="cursor-pointer hover:underline hover:font-bold"
+      >
+        My Pools
+      </p>
+      <p
+        onClick={() => navigate("/dashboard/leaderboard")}
+        className="cursor-pointer hover:underline hover:font-bold"
+      >
+        Leaderboard
+      </p>
+    </div>
+
+    {/* Right actions */}
+    <div className="flex gap-3 items-center">
+      <div className="flex gap-5 items-center text-white">
+
+        <p className="font-bold">
+          ₦
+          {isLoading
+            ? "---"
+            : Number(data?.balance || 0).toLocaleString()}
+        </p>
+      </div>
+
+      <button
+        className="px-4 py-2 rounded-full bg-blue-800 text-white hover:bg-blue-700"
+        onClick={() => navigate("/wallet")}
+      >
+        Deposit
+      </button>
+    </div>
+  </div>
+</div>
+
+  )
+}

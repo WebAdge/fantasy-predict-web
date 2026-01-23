@@ -1,38 +1,89 @@
-import { Table } from "antd";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Skeleton } from "antd";
 import Layout from "../../components/Layout";
-import { leaderboardColumn } from "../../components/columns/leaderboard";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
-import { IContest } from "../../type";
-import { fetchLeaderboard, getSinglePool } from "../../server/pools";
+import { IPoolLeaderboard } from "../../type";
+import { fetchPoolLeaderboard } from "../../server/pools";
+import Button from "../../library/Button";
+import { ArrowRightCircle } from "react-feather";
 
 const Leaderboard = () => {
-  const { competition, contest } = useParams();
+  const navigate = useNavigate();
 
-  const { data: constestData } = useQuery<IContest>(["contest-single", contest], () =>
-    getSinglePool(contest as string)
-  );
-  const { data, isLoading } = useQuery(
-    ["leaderboard", competition, contest],
-    () => fetchLeaderboard(competition as string, contest as string)
+  const { data, isLoading } = useQuery<IPoolLeaderboard[]>(
+    ["leaderboard-contest"],
+    () => fetchPoolLeaderboard(),
   );
 
   return (
     <Layout>
-      <div className="flex justify-between">
-        <h3 className="text-[22px] leading-[28px] font-bold mb-10">
-          {constestData?.title} Leaderboard
-        </h3>
-      </div>
+      <h3 className="text-[22px] leading-[28px] font-bold">Leaderboard</h3>
+      {isLoading ? (
+        <div className="flex flex-col gap-5 mt-5">
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div>
+      ) : (
+        <div className="mt-5">
+          {data?.map((contest) => (
+            <div
+              className="rounded-2xl p-5 bg-gray-200 my-2 border-[1px] border-gray-200"
+              key={contest._id}
+              onClick={() => {
+                if (contest.isCreator || contest.isMember) {
+                  navigate(
+                    // @ts-ignore
+                    `/leaderboard/${contest.name}/${contest.competition._id}/${contest.config.paid ? "true" : "false"}`,
+                  );
+                }
+              }}
+            >
+              <div className="flex justify-between">
+                <div className="flex gap-4">
+                  <div className="border-[1px] rounded-full p-2 border-red-100 text-center bg-red-100">
+                    <p className="uppercase text-gray-700">
+                      {contest.name.split(" ")[0]?.charAt(0) || ""}
+                      {contest.name.split(" ")[1]?.charAt(0) || "A"}
+                    </p>
+                  </div>
+                  <div>
+                    <h2 className="font-bold text-xl">{contest.name}</h2>
+                    <div className="text-xs italic flex gap-2">
+                      {/* @ts-ignore */}
+                      <p>Competion: {contest.competition?.code}</p>
+                      <p>Members: {contest.totalMembers}</p>
+                      {contest.config.paid ? (
+                        <p>Fee: {contest.config.amount}</p>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
 
-      <p className="mb-5">{constestData?.description}</p>
+                <ArrowRightCircle size={24} className="text-blue-950" />
+              </div>
 
-      <Table
-        columns={leaderboardColumn(Number(constestData?.amount) > 0 ? false : true)}
-        dataSource={data || []}
-        loading={isLoading}
-        pagination={false}
-      />
+              <div className="ml-12 mt-3">
+                {!contest.isCreator && !contest.isMember && (
+                  <Button
+                    size="small"
+                    color="danger"
+                    className="sm:w-[90px] w-[65px]"
+                    onClick={() =>
+                      navigate(`/pool-detail/${contest.name}/${contest._id}`)
+                    }
+                  >
+                    Join
+                  </Button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </Layout>
   );
 };
