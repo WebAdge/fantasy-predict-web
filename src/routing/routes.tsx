@@ -23,6 +23,7 @@ import Scores from "../pages/dashboard/Scores";
 import ContestDetail from "../pages/contests/ContestDetail";
 import LeaderboardPool from "../pages/leaderboard/LeaderboardPool";
 import ManagePool from "../pages/contests/ManagePool";
+import MatchDayPrediction from "../pages/dashboard/MatchDayPrediction";
 
 
 const PrivateRoutes = () => {
@@ -45,6 +46,7 @@ const PrivateRoutes = () => {
         <Route element={<Authenticated />}>
           <Route path="/onboarding" element={<ProfileCreation />} />
           <Route path="/dashboard" element={<Home />} />
+          <Route path="/dashboard/:matchday/:competition" element={<MatchDayPrediction />} />
           <Route path="/dashboard/scores" element={<Scores />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/profile" element={<Profile />} />

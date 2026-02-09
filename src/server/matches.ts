@@ -6,6 +6,16 @@ export const getMatches = async (competition: string) => {
     return data?.data;
 }
 
+export const getMatchesByMatchday = async (matchday: string, competition: string) => {
+    const { data } = await instance().get('/v1/matches/matchday', { params: { matchday, competition } }).catch(e => next(e));
+    return data?.data;
+}
+
+export const sendPredictionMail = async (values: { matchday: string, competition: string }) => {
+    const { data } = await instance().post('/v1/predictions/send-mail', values).catch(e => next(e));
+    return data?.data;
+}
+
 export const fetchUserCompetition = async () => {
     const { data } = await instance().get('/v1/user-competitions').catch(e => next(e));
     return data?.data?.docs;

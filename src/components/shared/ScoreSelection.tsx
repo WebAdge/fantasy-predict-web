@@ -31,6 +31,7 @@ const ScoreSelection = ({ item }: Props) => {
   const mutation = useMutation(predict, {
     onSuccess: () => {
       queryClient.invalidateQueries("match");
+      queryClient.invalidateQueries("by-matchday");
     },
   });
 

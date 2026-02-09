@@ -1,7 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 body {
   color: #1d2d50;
@@ -18,6 +19,43 @@ body {
 .home-container {
   height: calc(100vh - 120px);
   box-sizing: border-box;
+}
+
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }
 
 .secondary-cr {
@@ -329,3 +367,28 @@ body {
   background-color: #da8e6b !important;
   border-color: #da8e6b;
 }
+
+
+  .hero-glow {
+    position: relative;
+  }
+
+  .hero-glow::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, hsl(152 69% 45% / 0.12), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .pitch-lines {
+    background-image: 
+      linear-gradient(hsl(152 69% 45% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(152 69% 45% / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }

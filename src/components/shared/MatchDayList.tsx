@@ -1,66 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AlertTriangle, Calendar, Database, PlusCircle } from "react-feather";
-import { ICompetition, IMatch } from "../../type";
-import { Dispatch, SetStateAction } from "react";
-import useAppStore from "../../utils/appStore";
+import { Calendar } from "react-feather";
+import { IMatch } from "../../type";
 import ScoreSelection from "./ScoreSelection";
-import ScoreDisplay from "./ScoreDisplay";
-import { useNavigate } from "react-router-dom";
+import MatchdaySummary from "./MatchdaySummary";
 
 type Props = {
-  competitions: ICompetition[];
-  competition: number;
-  setCompetition: Dispatch<SetStateAction<number>>;
   matches: IMatch[];
   isFetching: boolean;
   groupedMatches: {
     title: string;
     data: IMatch;
   }[];
-  isScore: boolean
 };
 
-function MatchList({
-  competitions,
-  competition,
-  setCompetition,
+function MatchDayList({
   matches,
   groupedMatches,
   isFetching,
-  isScore
 }: Props) {
 
-  const navigate = useNavigate();
+  const hasPick = matches.some((match) => match.prediction);
 
   return (
-    <div className="container">
-      <div className="w-full flex gap-1">
-      <div className="flex border-[1px] border-[#f2f2f2] gap-2 p-[5px] overflow-x-auto w-[95%] text-center">
-        {competitions
-          ?.sort((a, b) => b.name.localeCompare(a.name))
-          ?.map((league, index) => (
-            <div
-              key={index}
-              onClick={() => setCompetition(index)}
-              style={{
-                backgroundColor:
-                  competition === index ? "#FFA500" : "rgba(0, 0, 0, 0.40)",
-              }}
-              className="text-white border-[0] rounded-[10px] cursor-pointer text-center px-5 py-3 w-[190px] shrink-0"
-            >
-              {league.name}
-            </div>
-          ))}
-      </div>
-
-      <div 
-      onClick={() => {
-        useAppStore.setState({ modal: { open: true, type: "competition" } });
-      }}
-      className="w-[10%] flex justify-center items-center cursor-pointer">
-        <PlusCircle />
-      </div>
-      </div>
+    <div className="container">  
 
       {/* Matches Section */}
       <div style={{ overflowY: "auto" }}>
@@ -120,17 +82,8 @@ function MatchList({
                   </div>
 
                   {/* Prediction */}
-                  {isScore ? 
-                  <div onClick={() => navigate(`/dashboard/${item.matchday}/${item.competition}`) }>
-                  <ScoreDisplay item={item} /> 
-                  </div>:
-                  <div onClick={() => navigate(`/dashboard/${item.matchday}/${item.competition}`) }>
-                    <AlertTriangle color="red" size={30} />
-                    <p className="text-center text-red-700 font-bold">Pick</p>
-                    
-                  </div>
-                  // <ScoreSelection item={item} />
-                  }
+                  <ScoreSelection item={item} />
+                  
 
                   {/* Away Team */}
                   <div className="flex flex-col justify-center items-center">
@@ -158,8 +111,10 @@ function MatchList({
           </div>
         )}
       </div>
+
+      {hasPick && <MatchdaySummary matches={matches} hasPicks={hasPick} />}
     </div>
   );
 }
 
-export default MatchList;
+export default MatchDayList;
