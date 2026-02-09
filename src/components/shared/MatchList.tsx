@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AlertTriangle, Calendar, Database, PlusCircle } from "react-feather";
+import { AlertTriangle, Calendar, PlusCircle } from "react-feather";
 import { ICompetition, IMatch } from "../../type";
 import { Dispatch, SetStateAction } from "react";
 import useAppStore from "../../utils/appStore";
-import ScoreSelection from "./ScoreSelection";
 import ScoreDisplay from "./ScoreDisplay";
 import { useNavigate } from "react-router-dom";
 

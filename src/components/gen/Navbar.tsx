@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Trophy, Users, TrendingUp } from "lucide-react";
+import { Trophy } from "lucide-react";
 
 const Navbar = () => {
   return (
