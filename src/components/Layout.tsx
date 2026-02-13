@@ -1,20 +1,20 @@
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { Activity, Globe, Home, User, Users } from "react-feather";
-import { useQuery } from "react-query";
-import { getWallet } from "../server/wallet";
 
 type Props = {
   children: ReactNode;
 };
 
 const Layout = ({ children }: Props) => {
-  const { data, isLoading } = useQuery("wallet", getWallet);
+  // const { data, isLoading } = useQuery("wallet", getWallet);
 
   return (
     <div className="pb-2">
       <div className="w-full mx-auto">
-        <Navbar isLoading={isLoading} data={data} />
+        <Navbar 
+        // isLoading={isLoading} data={data} 
+        />
         <div className="sm:mt-10 mt-4 mx-5">{children}</div>
         <Footer />
       </div>
@@ -72,12 +72,12 @@ const Footer = () => {
   )
 }
 
-type NProp = {
-  isLoading: boolean;
-  data: any
-}
+// type NProp = {
+//   isLoading: boolean;
+//   data: any
+// }
 
-const Navbar = ({ isLoading, data }: NProp) => {
+const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="sticky top-0 z-50 w-full">
@@ -114,7 +114,7 @@ const Navbar = ({ isLoading, data }: NProp) => {
 
     {/* Right actions */}
     <div className="flex gap-3 items-center">
-      <div className="flex gap-5 items-center text-white">
+      {/* <div className="flex gap-5 items-center text-white">
 
         <p className="font-bold">
           ₦
@@ -129,7 +129,14 @@ const Navbar = ({ isLoading, data }: NProp) => {
         onClick={() => navigate("/wallet")}
       >
         Deposit
-      </button>
+      </button> */}
+      <button
+              onClick={() => navigate("/profile")}
+              className="flex flex-col items-center text-white active:scale-95 mr-5"
+            >
+              <User size={22} />
+              {/* <span className="text-xs mt-1">Profile</span> */}
+            </button>
     </div>
   </div>
 </div>

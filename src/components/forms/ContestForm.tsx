@@ -43,7 +43,8 @@ const ContestForm = () => {
         ...formData,
         config: {
           ...formData.config,
-          amount: formData.config?.amount ? Number(formData.config.amount) : 0,
+          amount: 0,
+          // formData.config?.amount ? Number(formData.config.amount) : 0,
           paid: formData.config?.amount ? true : false,
         }
       });
@@ -100,7 +101,7 @@ const ContestForm = () => {
             <Form.Item
               name="competition"
               label={<p className="text-black font-bold">Competition</p>}
-              rules={[{ required: false, message: "Select competition" }]}
+              rules={[{ required: true, message: "Select competition" }]}
             >
               <Select
                 placeholder="Select Competition"
@@ -118,7 +119,7 @@ const ContestForm = () => {
               </Select>
             </Form.Item>
             
-            <Form.Item
+            {/* <Form.Item
               name="amount"
               label={<p className="text-black font-bold">Amount</p>}
             >
@@ -135,7 +136,7 @@ const ContestForm = () => {
               }
               />
               <p>If you want others to pay to join, enter amount</p>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               name="privacy"

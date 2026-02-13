@@ -77,3 +77,8 @@ export const addFeedback = async (values: { message: string }) => {
     const { data } = await instance().post(`/v1/feedbacks`, values).catch(e => next(e));
     return data?.data;
 }
+
+export const getAllUsers = async () => {
+    const { data } = await instance().get(`/v1/users`).catch(e => next(e));
+    return data?.data;
+}

@@ -2,9 +2,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import heroStadium from "../../assets/hero-stadium.jpg";
 import Button from "../../library/Button";
+import { useNavigate } from "react-router-dom";
 // import AnimatedCounter from "@/components/AnimatedCounter";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background image with overlay */}
@@ -64,15 +67,19 @@ const HeroSection = () => {
             whileTap={{ scale: 0.97 }}
             className="group flex items-center gap-2 rounded-xl bg-primary px-8 py-4 font-display text-base font-bold text-primary-foreground shadow-[var(--shadow-glow)] transition-all hover:brightness-110"
           >
-            <Button className="flex gap-4 items-center">
+            <Button className="flex gap-4 items-center" onClick={() => navigate('/login')}> 
             Start Predicting
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </motion.button>
 
+          <a
+              href={`#${"How It Works".toLowerCase().replace(/ /g, "-")}`}
+          >
           <Button color="outline" >
             See How It Works
           </Button>
+          </a>
         </motion.div>
 
         {/* Stats */}
