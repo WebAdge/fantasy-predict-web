@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Trophy } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import Logo from '../../assets/logo-icon.png';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
@@ -11,11 +15,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <Trophy className="h-5 w-5 text-primary-foreground" />
+          <div className="flex items-center justify-center rounded-lg bg-primary">
+            <img src={Logo} className="h-[50px] w-[50px] rounded-full" />
           </div>
           <span className="font-display text-xl font-bold text-foreground">
-            Fantasy<span className="text-primary">Predict</span>
+            Fantasy<span className="text-primary">{" "}Predict</span>
           </span>
         </div>
 
@@ -32,10 +36,14 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="font-body text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <button 
+          onClick={() => navigate('/login')}
+          className="font-body text-sm text-muted-foreground transition-colors hover:text-foreground">
             Log In
           </button>
-          <button className="rounded-lg bg-primary px-5 py-2.5 font-display text-sm font-semibold text-primary-foreground transition-all hover:shadow-[var(--shadow-glow)] hover:brightness-110">
+          <button
+          onClick={() => navigate('/create-account')}
+           className="rounded-lg bg-primary px-5 py-2.5 font-display text-sm font-semibold text-primary-foreground transition-all hover:shadow-[var(--shadow-glow)] hover:brightness-110">
             Sign Up
           </button>
         </div>

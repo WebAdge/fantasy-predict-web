@@ -20,7 +20,7 @@ const MatchdaySummary = ({ matches, hasPicks }: Props) => {
 
   const mutation = useMutation(sendPredictionMail, {
     onMutate: () => {
-       navigate("/dashboard");
+       navigate("/home");
     }
   })
 
@@ -28,7 +28,7 @@ const MatchdaySummary = ({ matches, hasPicks }: Props) => {
     if (sendEmail) {
       mutation.mutate({ matchday: matches[0]?.matchday, competition: matches[0]?.competition });
     } else {
-      navigate("/dashboard");
+      navigate("/home");
     }
   }
 

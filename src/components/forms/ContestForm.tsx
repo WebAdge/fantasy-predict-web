@@ -29,7 +29,7 @@ const ContestForm = () => {
 
   const mutation = useMutation(createPool, {
     onSuccess: () => {
-      window.location.href = "/dashboard/pools";
+      window.location.href = "/home/pools";
     },
     onError: (error) => {
       setError(error instanceof Error ? error.message : "An error occurred");

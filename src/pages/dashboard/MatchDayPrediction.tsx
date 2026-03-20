@@ -60,7 +60,7 @@ const MatchDayPrediction = () => {
               />
             </div>
 
-            <Button className="mt-10" onClick={() => navigate(`/dashboard/${matchday}/${competition}`) }>
+            <Button className="mt-10" onClick={() => navigate(`/home/${matchday}/${competition}`) }>
                 Pick Round {Number(matchday) + 1}
             </Button>
           </div>

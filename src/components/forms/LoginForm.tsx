@@ -16,7 +16,7 @@ const LoginForm = () => {
     retry: false,
     onSuccess: (data) => {
       saveCustomerDetails(data);
-      navigate("/dashboard");
+      navigate("/home");
     },
   });
 

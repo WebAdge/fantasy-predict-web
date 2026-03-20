@@ -21,7 +21,7 @@ const VerifyAccountForm = () => {
 
   const mutation = useMutation(verifyAccount, {
     onSuccess: () => {
-      navigate("/dashboard");
+      navigate("/home");
       setError("");
     },
     onMutate: () => {

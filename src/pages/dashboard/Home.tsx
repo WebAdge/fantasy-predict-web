@@ -9,14 +9,17 @@ import MatchList from "../../components/shared/MatchList";
 import { format } from "date-fns";
 import { ICompetition, IMatch } from "../../type";
 import AddCompetition from "../../components/modals/AddCompetition";
+import Livescores from "../../components/shared/Livescores";
 
 const Home = () => {
-  const [competitionId, setCompetitionId] = useState("6913e827e79d97136980f773");
+  const [competitionId, setCompetitionId] = useState(
+    "6913e827e79d97136980f773",
+  );
 
   const [competition, setCompetition] = useState(0);
   const { data: competitions } = useQuery<ICompetition[]>(
     "competition",
-    fetchUserCompetition
+    fetchUserCompetition,
   );
 
   useEffect(() => {
@@ -25,15 +28,12 @@ const Home = () => {
     }
   }, [competition, competitions]);
 
-  const {
-    data: matches,
-    isLoading: isFetching,
-  } = useQuery<IMatch[]>(
+  const { data: matches, isLoading: isFetching } = useQuery<IMatch[]>(
     ["match", competitionId],
     () => getMatches(competitionId),
     {
       enabled: !!competitionId, // only run when competitionId is truthy
-    }
+    },
   );
 
   const groupMatchesByDate = (matches: IMatch[]) => {
@@ -64,17 +64,33 @@ const Home = () => {
       ) : (
         <>
           <div className="w-full">
+            <div className="mt-8 grid sm:grid-cols-3 grid-cols-1 sm:gap-5">
+              <div className="sm:col-span-2">
+                <div className="sm:p-10">
+                  <MatchList
+                    competitions={competitions || []}
+                    competition={competition}
+                    setCompetition={setCompetition}
+                    matches={matches || []}
+                    groupedMatches={groupedMatches}
+                    isFetching={isFetching}
+                    isScore={false}
+                  />
+                </div>
+              </div>
 
-            <div className="mt-8">
-              <MatchList 
-              competitions={competitions || []}
-              competition={competition}
-              setCompetition={setCompetition}
-              matches={matches || []}
-              groupedMatches={groupedMatches}
-              isFetching={isFetching}
-              isScore={false}
+              <div className="sm:block hidden">
+                <h3 className="font-bold text-lg mb-5">LiveScores</h3>
+                <Livescores
+                competitions={competitions || []}
+                competition={competition}
+                setCompetition={setCompetition}
+                matches={matches || []}
+                groupedMatches={groupedMatches}
+                isFetching={isFetching}
+                isScore
               />
+              </div>
             </div>
           </div>
         </>

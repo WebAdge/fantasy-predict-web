@@ -45,13 +45,13 @@ const PrivateRoutes = () => {
         {/* routes outside the sidebar or dashboard here */}
         <Route element={<Authenticated />}>
           <Route path="/onboarding" element={<ProfileCreation />} />
-          <Route path="/dashboard" element={<Home />} />
-          <Route path="/dashboard/:matchday/:competition" element={<MatchDayPrediction />} />
-          <Route path="/dashboard/scores" element={<Scores />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/:matchday/:competition" element={<MatchDayPrediction />} />
+          <Route path="/home/scores" element={<Scores />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/add-avatar" element={<AddAvatar />} />
-          <Route path="/dashboard/pools" element={<Challenges />} />
+          <Route path="/home/pools" element={<Challenges />} />
           <Route path="/create-pool" element={<CreateContest />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/pool-detail/:name/:id" element={<ContestDetail />} />

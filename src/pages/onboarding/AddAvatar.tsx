@@ -12,7 +12,7 @@ const AddAvatar = () => {
   const { mutate, isLoading: updateLoading } = useMutation(updateProfile, {
     onSuccess: (data) => {
       saveCustomerDetails(data);
-      navigate("/dashboard");
+      navigate("/home");
     },
     onError: () => {
       setErr("Something went wrong, try again!");
@@ -25,7 +25,7 @@ const AddAvatar = () => {
   };
 
   useEffect(() => {
-    if (customer?.meta?.avatar) navigate("/dashboard");
+    if (customer?.meta?.avatar) navigate("/home");
   }, [customer]);
 
   return (

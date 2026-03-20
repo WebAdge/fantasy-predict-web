@@ -32,7 +32,7 @@ const Profile = () => {
         <div className="flex gap-3 my-5">
           <div
             className="mt-[2px] cursor-pointer"
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/home")}
           >
             <X color="black" />
           </div>

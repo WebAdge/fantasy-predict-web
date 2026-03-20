@@ -9,19 +9,11 @@ const routes = [
   "/reset-password",
   "/forget-password",
   "/terms-and-condition",
-  "/onboarding",
-  "/dashboard",
+  "/home",
+  "/home/score",
+  "/home/pools",
+  "/create-pool",
   "/profile",
-  "/all-insight",
-  "/vote-topic",
-  "/live-dashboard/:id",
-  "/weekly-topic/:quizId",
-  "/chat",
-  "/chat/:sessionId",
-  "/recent",
-  "/trending-topics",
-  "/add-avatar",
-  "/insight/:id/:name",
 ];
 
 function generateSitemap() {

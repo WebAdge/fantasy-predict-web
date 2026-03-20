@@ -45,7 +45,7 @@ const ChatHeader = () => {
                 <ul>
                   <li
                     className="flex gap-2 cursor-pointer hover:opacity-70 py-1"
-                    onClick={() => navigate("/dashboard")}
+                    onClick={() => navigate("/home")}
                   >
                     <Home color="#1D2D50" className="mt-[1px]" size={20} />
                     <p className="text-[#1D2D50]">Home</p>

@@ -39,7 +39,7 @@ const Footer = () => {
             </span>
           </div>
           <p className="font-body text-xs text-muted-foreground">
-            © 2026 FantasyPredict. Predict. Compete. Dominate.
+            © 2026 Fantasy Predict. Predict. Compete. Dominate.
           </p>
         </div>
       </div>

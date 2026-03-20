@@ -11,7 +11,7 @@ export const processDefaults = (navigate: NavigateFunction) => {
       localStorage.clear();
       return;
     } else {
-      if (token) navigate("/dashboard");
+      if (token) navigate("/home");
     }
   }, []);
 };

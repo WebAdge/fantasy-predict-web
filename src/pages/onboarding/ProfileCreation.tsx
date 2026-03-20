@@ -126,7 +126,7 @@ const ProfileCreation = () => {
                     Profile creation complete
                   </p>
                   <Button
-                    onClick={() => navigate("/dashboard")}
+                    onClick={() => navigate("/home")}
                     className="mt-5"
                   >
                     Proceed to home

@@ -6,18 +6,16 @@ type Props = {
   item: IMatch;
 };
 
-const ScoreDisplay = ({ item }: Props) => {
+const ScoreResultDisplay = ({ item }: Props) => {
   const [homeScore, setHomeScore] = useState('');
   const [awayScore, setAwayScore] = useState('');
 
   useEffect(() => {
-    if (item?.prediction?.length) {
-        const home = item.prediction[0]?.outcome?.split('-')[0]
-        const away = item.prediction[0]?.outcome?.split('-')[1]
-        setHomeScore(home);
-        setAwayScore(away);
+    if (item?.homeTeam?.score && item?.awayTeam?.score) {        
+        setHomeScore(String(item?.homeTeam?.score || ''));
+        setAwayScore(String(item?.awayTeam?.score || ''));
     }
-  }, [item.prediction])
+  }, [item])
 
   return (
     <div className="flex flex-col justify-center gap-5 items-center">
@@ -53,4 +51,4 @@ const ScoreDisplay = ({ item }: Props) => {
   );
 };
 
-export default ScoreDisplay;
+export default ScoreResultDisplay;

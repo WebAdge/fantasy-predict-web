@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { AlertTriangle, Calendar, PlusCircle } from "react-feather";
+import { useNavigate } from "react-router-dom";
 import { ICompetition, IMatch } from "../../type";
 import { Dispatch, SetStateAction } from "react";
-import useAppStore from "../../utils/appStore";
-import ScoreDisplay from "./ScoreDisplay";
-import { useNavigate } from "react-router-dom";
+import { Calendar } from "react-feather";
+import ScoreResultDisplay from "./ScoreResult";
 
 type Props = {
   competitions: ICompetition[];
@@ -16,51 +14,39 @@ type Props = {
     title: string;
     data: IMatch;
   }[];
-  isScore: boolean;
+  isScore: boolean
 };
 
-function MatchList({
-  competitions,
+const Livescores = ({
+    competitions,
   competition,
   setCompetition,
   matches,
   groupedMatches,
   isFetching,
-  isScore,
-}: Props) {
+}: Props) => {
   const navigate = useNavigate();
 
   return (
     <div className="container">
       <div className="w-full flex gap-1">
-        <div className="flex border-[1px] border-[#f2f2f2] gap-2 sm:p-[5px] overflow-x-auto w-[95%] text-center">
-          {competitions
-            ?.sort((a, b) => b.name.localeCompare(a.name))
-            ?.map((league, index) => (
-              <div
-                key={index}
-                onClick={() => setCompetition(index)}
-                style={{
-                  backgroundColor:
-                    competition === index ? "#FFA500" : "rgba(0, 0, 0, 0.40)",
-                }}
-                className="text-white border-[0] rounded-[10px] cursor-pointer w-[180px] text-center px-5 py-3 shrink-0"
-              >
-                {league.name}
-              </div>
-            ))}
-        </div>
-
-        <div
-          onClick={() => {
-            useAppStore.setState({
-              modal: { open: true, type: "competition" },
-            });
-          }}
-          className="w-[10%] flex justify-center items-center cursor-pointer"
-        >
-          <PlusCircle />
-        </div>
+      <div className="flex border-[1px] border-[#f2f2f2] gap-2 p-[5px] overflow-x-auto w-[95%] text-center">
+        {competitions
+          ?.sort((a, b) => b.name.localeCompare(a.name))
+          ?.map((league, index) => (
+            <div
+              key={index}
+              onClick={() => setCompetition(index)}
+              style={{
+                backgroundColor:
+                  competition === index ? "#FFA500" : "rgba(0, 0, 0, 0.40)",
+              }}
+              className="text-white border-[0] rounded-[10px] cursor-pointer text-center px-5 py-3 w-[190px] shrink-0"
+            >
+              {league.name}
+            </div>
+          ))}
+      </div>
       </div>
 
       {/* Matches Section */}
@@ -120,38 +106,10 @@ function MatchList({
                     </div>
                   </div>
 
-                  {/* Prediction */}
-                  {
-                    isScore ? (
-                      <div
-                        onClick={() =>
-                          navigate(`/home/${item.matchday}/${item.competition}`)
-                        }
-                      >
-                        <ScoreDisplay item={item} />
-                      </div>
-                    ) : item.prediction[0]?.outcome ? (
-                      <div
-                        onClick={() =>
-                          navigate(`/home/${item.matchday}/${item.competition}`)
-                        }
-                      >
-                        <ScoreDisplay item={item} />
-                      </div>
-                    ) : (
-                      <div
-                        onClick={() =>
-                          navigate(`/home/${item.matchday}/${item.competition}`)
-                        }
-                      >
-                        <AlertTriangle color="red" size={30} />
-                        <p className="text-center text-red-700 font-bold">
-                          Pick
-                        </p>
-                      </div>
-                    )
-                    // <ScoreSelection item={item} />
-                  }
+                  {/* Prediction */}                  
+                  <div onClick={() => navigate(`/home/${item.matchday}/${item.competition}`) }>
+                  <ScoreResultDisplay item={item} /> 
+                  </div>
 
                   {/* Away Team */}
                   <div className="flex flex-col justify-center items-center">
@@ -183,4 +141,4 @@ function MatchList({
   );
 }
 
-export default MatchList;
+export default Livescores

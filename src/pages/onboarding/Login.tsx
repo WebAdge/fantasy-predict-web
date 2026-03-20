@@ -105,7 +105,7 @@ const MobileView = ({
           </p>
         )}
         <LoginForm />
-        <p className="mt-3">
+        <p className="mt-3 text-sm">
         Don't have an account?{" "}
         <span
           className="underline cursor-pointer"
@@ -142,7 +142,7 @@ const DesktopView = ({
               </p>
             )}
             <LoginForm />
-             <p className="mt-3">
+             <p className="mt-5 text-sm">
             Don't have an account?{" "}
             <span
               className="underline cursor-pointer"
