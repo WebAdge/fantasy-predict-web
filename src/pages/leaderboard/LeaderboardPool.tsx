@@ -7,7 +7,7 @@ import { fetchCompetitionLeaderboard } from "../../server/pools";
 import Loading from "../../components/Loading";
 
 const LeaderboardPool = () => {
-  const { id, name, free } = useParams();
+  const { id, name } = useParams();
 
   const { data, isLoading } = useQuery(['comp-leaderboard', id], () => fetchCompetitionLeaderboard(id as string))
 
@@ -30,7 +30,7 @@ const LeaderboardPool = () => {
       </div>
 
       <div className="mt-5">
-      <Table columns={leaderboardColumn(free === "true")} dataSource={data?.board || []} pagination={false} />
+      <Table columns={leaderboardColumn()} dataSource={data?.board || []} pagination={false} />
       </div>
     </div>}
     </Layout>

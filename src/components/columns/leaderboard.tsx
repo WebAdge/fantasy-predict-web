@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 
-export const leaderboardColumn = (isFree: boolean) => [
+export const leaderboardColumn = () => [
   {
     title: "Player",
     key: "username",
@@ -33,14 +33,14 @@ export const leaderboardColumn = (isFree: boolean) => [
     key: "Total",
     dataIndex: "Total",
   },
-  {
-    ...(!isFree && {
-      title: "Amt",
-      dataIndex: "amount",
-      key: "amount",
-      render: (value: string) => (
-        <>₦ {Number(value || 0).toLocaleString()}</>
-      ),
-    }),
-  },
+  // {
+  //   ...(!isFree && {
+  //     title: "Amt",
+  //     dataIndex: "amount",
+  //     key: "amount",
+  //     render: (value: string) => (
+  //       <>₦ {Number(value || 0).toLocaleString()}</>
+  //     ),
+  //   }),
+  // },
 ];
