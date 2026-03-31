@@ -33,7 +33,7 @@ const MobileView = ({ query }: Props) => {
         <div>
           {query[0]?.code && (
             <p className="navy-color text-center my-2">
-              Enter the OTP sent to your phone
+              Enter the OTP sent to your email address
             </p>
           )}
           <ResetPasswordForm />
@@ -55,7 +55,7 @@ const DesktopView = ({ query }: Props) => {
           <div className="mt-5">
             {query[0]?.code && (
               <p className="navy-color text-center my-2">
-                Enter the OTP sent to your phone
+                Enter the OTP sent to your email address
               </p>
             )}
             <ResetPasswordForm />
