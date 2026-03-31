@@ -10,7 +10,7 @@ const prizes = [
     gradient: "from-primary to-gold-dark",
     glow: "glow-[#ffd700]",
     scale: "lg:scale-110",
-    textSize: "text-4xl md:text-5xl",
+    textSize: "text-4xl md:text-4xl",
   },
   {
     position: "2nd",
