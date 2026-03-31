@@ -80,9 +80,9 @@ const RegisterForm = () => {
           name="gender"
           label={<p className="font-normal">Gender</p>}
           rules={[{ required: true, message: "Select Gender" }]}
-          className="w-full"
+          className="w-full h-[40px]"
         >
-          <Select placeholder="Select Gender" className="h-[40px]">
+          <Select placeholder="Select Gender" className="">
             <Select.Option value="male">Male</Select.Option>
             <Select.Option value="female">Female</Select.Option>
             <Select.Option value="unspecified">Prefer Not to Say</Select.Option>

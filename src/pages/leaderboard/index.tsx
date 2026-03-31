@@ -37,7 +37,7 @@ const Leaderboard = () => {
         <div className="mt-5">
           {data?.filter(d => d.name === "Global")?.map((contest) => (
             <div
-              className="rounded-2xl p-5 bg-gray-200 my-2 border-[1px] border-gray-200"
+              className="rounded-2xl p-5 bg-white my-2 border-[1px] border-gray-200"
               key={contest._id}
               onClick={() => {
                 if (contest.isCreator || contest.isMember) {
@@ -90,7 +90,7 @@ const Leaderboard = () => {
           ))}
           {data?.filter(d => d.name !== "Global")?.map((contest) => (
             <div
-              className="rounded-2xl p-5 bg-gray-200 my-2 border-[1px] border-gray-200"
+              className="rounded-2xl p-5 bg-white my-2 border-[1px] border-gray-200"
               key={contest._id}
               onClick={() => {
                 if (contest.isCreator || contest.isMember) {

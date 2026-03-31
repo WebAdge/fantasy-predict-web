@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 body {
   color: #1d2d50;
@@ -11,7 +10,8 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-family: "Inter", sans-serif;
-  background-color: #fff;
+  background-color: #cadef0;
+  /* #fff; */
 }
 
 .home-header {
@@ -22,7 +22,6 @@ body {
   height: calc(100vh - 120px);
   box-sizing: border-box;
 }
-
 
 .logo {
   height: 6em;
@@ -68,7 +67,6 @@ body {
   background-color: #000 !important;
 }
 
-
 .ant-modal-title {
   margin: 0;
   color: #000 !important;
@@ -76,6 +74,7 @@ body {
   font-size: 18px !important;
   line-height: 1.5;
   word-wrap: break-word;
+  background-color: #cadef0;
 }
 
 .ant-modal-close-x {
@@ -90,7 +89,8 @@ body {
 }
 
 .insight-badge {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       112.32deg,
       rgba(255, 255, 255, 0.4) 0%,
       rgba(255, 255, 255, 0) 101.12%
@@ -113,16 +113,19 @@ body {
   font-size: 14px;
   line-height: 1;
   list-style: none;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   position: relative;
   display: inline-flex;
   align-items: center;
-  background: transparent !important;
+  /* background: transparent !important; */
   border: 1px solid #d9d9d9;
   border-radius: 6px;
-  transition: border 0.2s, box-shadow 0.2s;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
 }
 
 .ant-picker-suffix {
@@ -144,7 +147,7 @@ body {
   color: #1d2d50 !important;
   font-size: 14px;
   line-height: 1.5714285714285714;
-  background-color: transparent !important;
+  background-color: #fff !important;
   background-image: none;
   border-width: 1px;
   border-style: solid;
@@ -153,12 +156,12 @@ body {
   transition: all 0.2s;
   flex: auto;
   height: auto;
-  background: transparent;
+  background: #fff !important;
   border: 0;
 }
 
 .ant-input css-dev-only-do-not-override-txh9fw {
-  background-color: transparent;
+  background-color: #fff !important;
 }
 
 .flyover-container {
@@ -324,12 +327,17 @@ body {
   box-shadow: 0 0 0 2px #da8e6b !important;
   border-radius: 50%;
   cursor: pointer;
-  transition: inset-inline-start 0.2s, inset-block-start 0.2s, width 0.2s,
-    height 0.2s, box-shadow 0.2s;
+  transition:
+    inset-inline-start 0.2s,
+    inset-block-start 0.2s,
+    width 0.2s,
+    height 0.2s,
+    box-shadow 0.2s;
 }
 
 .chat-box {
-  background: linear-gradient(0deg, #272941, #272941),
+  background:
+    linear-gradient(0deg, #272941, #272941),
     linear-gradient(
       323.71deg,
       #4c4d56 13.67%,
@@ -353,7 +361,17 @@ body {
 }
 
 .inp .ant-input {
-  background-color: transparent !important;
+  background-color: #fff !important;
+}
+
+:where(.css-dev-only-do-not-override-txh9fw).ant-select-single:not(
+    .ant-select-customize-input
+  )
+  .ant-select-selector {
+  background: #fff !important;
+  height: 40px !important;
+  justify-content: center;
+  justify-items: center;
 }
 
 .customSelect .ant-select-selector {
@@ -370,27 +388,30 @@ body {
   border-color: #da8e6b;
 }
 
+.hero-glow {
+  position: relative;
+}
 
-  .hero-glow {
-    position: relative;
-  }
+.hero-glow::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse,
+    hsl(152 69% 45% / 0.12),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
 
-  .hero-glow::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
-    background: radial-gradient(ellipse, hsl(152 69% 45% / 0.12), transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .pitch-lines {
-    background-image: 
-      linear-gradient(hsl(152 69% 45% / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(152 69% 45% / 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
+.pitch-lines {
+  background-image:
+    linear-gradient(hsl(152 69% 45% / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(152 69% 45% / 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}

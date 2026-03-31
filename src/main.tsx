@@ -4,6 +4,7 @@ import App from './App.tsx'
 import 'antd/dist/reset.css';
 import './App.css'
 import './AppCustom.css';
+import './AppGen.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

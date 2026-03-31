@@ -7,9 +7,12 @@ import { fetchUserCompetition, getMatches } from "../../server/matches";
 import { useEffect, useState } from "react";
 import MatchList from "../../components/shared/MatchList";
 import { format } from "date-fns";
+import WorldCupBanner from "../../assets/feature-image.png";
 import { ICompetition, IMatch } from "../../type";
 import AddCompetition from "../../components/modals/AddCompetition";
 import Livescores from "../../components/shared/Livescores";
+import WorldCupIncentive from "../../components/modals/WorldCupIncentive";
+import useAppStore from "../../utils/appStore";
 
 const Home = () => {
   const [competitionId, setCompetitionId] = useState(
@@ -63,7 +66,31 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          <div className="w-full">
+          <WorldCupIncentive />
+          <div className="w-full mb-20">            
+            <img
+              src={WorldCupBanner}
+              alt="banner"
+              className="w-full h-[500px] sm:hidden object-cover rounded-lg"
+            />
+            <div className="text-center">
+              <h3 className="text-[22px] leading-[28px] font-bold mb-3 mt-5">
+                World Cup Tornament
+              </h3>
+              <p className="text-gray-600">
+                Predict the scores of the matches and climb up the leaderboard!
+              </p>
+              <div
+                className="rounded-xl p-5 bg-blue-50 cursor-pointer mt-5 inline-block"
+                onClick={() =>
+                  useAppStore.setState({
+                    modal: { type: "worldcup-incentive", open: true },
+                  })
+                }
+              >
+                <p className="text-gray-600">See What You Can Win!</p>
+              </div>
+            </div>
             <div className="mt-8 grid sm:grid-cols-3 grid-cols-1 sm:gap-5">
               <div className="sm:col-span-2">
                 <div className="sm:p-10">
@@ -82,14 +109,14 @@ const Home = () => {
               <div className="sm:block hidden">
                 <h3 className="font-bold text-lg mb-5">LiveScores</h3>
                 <Livescores
-                competitions={competitions || []}
-                competition={competition}
-                setCompetition={setCompetition}
-                matches={matches || []}
-                groupedMatches={groupedMatches}
-                isFetching={isFetching}
-                isScore
-              />
+                  competitions={competitions || []}
+                  competition={competition}
+                  setCompetition={setCompetition}
+                  matches={matches || []}
+                  groupedMatches={groupedMatches}
+                  isFetching={isFetching}
+                  isScore
+                />
               </div>
             </div>
           </div>

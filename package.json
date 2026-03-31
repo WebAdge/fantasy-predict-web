@@ -40,6 +40,7 @@
     "rehype-external-links": "^3.0.0",
     "remark-gfm": "^4.0.0",
     "socket.io-client": "^4.7.5",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.9.3",
     "zustand": "^4.3.9"
   },

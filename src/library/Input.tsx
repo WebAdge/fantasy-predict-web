@@ -18,7 +18,7 @@ type Props<T> = {
 
 const Input = (props: Partial<Props<any>>) => {
   const bgColor =
-    (props.color === "outline" && "bg-transparent") || "bg-transparent";
+    (props.color === "outline" && "bg-white") || "bg-white";
 
   return (
     <>

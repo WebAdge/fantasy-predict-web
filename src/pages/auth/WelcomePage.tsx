@@ -1,19 +1,16 @@
-import Features from "../../components/gen/Features";
-import Footer from "../../components/gen/Footer";
-import HeroSection from "../../components/gen/HeroSection";
-import HowItWorks from "../../components/gen/HowItWorks";
-import LeaderboardPreview from "../../components/gen/LeaderboardPreview";
-import Navbar from "../../components/gen/Navbar";
-
+import AboutSection from "../../components/landing/AboutSection";
+import Footer from "../../components/landing/Footer";
+import HeroSection from "../../components/landing/HeroSection";
+import HowItWorks from "../../components/landing/HowItWorks";
+import PrizePool from "../../components/landing/PrizePool";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+  return (    
+    <div className="min-h-screen bg-black/95">
       <HeroSection />
       <HowItWorks />
-      <Features />
-      <LeaderboardPreview />
+      <PrizePool />
+      <AboutSection />
       <Footer />
     </div>
   );

@@ -54,7 +54,7 @@ const Challenges = () => {
           value={search}
           placeholder="Search by name"
           // placeholder="Search by name or invitation code"
-          className="h-[50px]"
+          className="h-[50px] bg-white"
           onChange={(val) => onSearch(val.target.value)}
         />      
       </div>
@@ -63,7 +63,7 @@ const Challenges = () => {
         <Loading />
       ) : (
         <>
-          <div className="mt-10">
+          <div className="mt-10 mb-20">
             {data?.map((contest) => (
               <div className="rounded-3xl p-5 bg-white my-5 border-[1px] border-gray-200" key={contest._id}>
                 <div className="flex justify-between">

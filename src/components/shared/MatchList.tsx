@@ -94,7 +94,7 @@ function MatchList({
               {section.data.map((item: IMatch, index: number) => (
                 <div
                   key={index}
-                  className="resultCard"
+                  className="resultCard bg-[#fff]"
                   style={{
                     display: "flex",
                     alignItems: "center",
