@@ -31,9 +31,9 @@ function MatchList({
   const navigate = useNavigate();
 
   return (
-    <div className="container">
+    <div className="sm:container">
       <div className="w-full flex gap-1">
-        <div className="flex border-[1px] border-[#f2f2f2] gap-2 sm:p-[5px] overflow-x-auto w-[95%] text-center">
+        <div className="flex gap-2 sm:p-[5px] items-center overflow-x-auto w-[95%] text-center">
           {competitions
             ?.sort((a, b) => b.name.localeCompare(a.name))
             ?.map((league, index) => (
@@ -43,8 +43,9 @@ function MatchList({
                 style={{
                   backgroundColor:
                     competition === index ? "#FFA500" : "rgba(0, 0, 0, 0.40)",
+                  borderWidth: competition === index ? 0 : 1,
                 }}
-                className="text-white border-[0] rounded-[10px] cursor-pointer w-[180px] text-center px-5 py-3 shrink-0"
+                className="text-white items-center rounded-[10px] cursor-pointer border-[1px] w-[180px] text-center px-5 py-4 shrink-0"
               >
                 {league.name}
               </div>
@@ -83,7 +84,7 @@ function MatchList({
                   style={{
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#333",
+                    color: "#fff",
                   }}
                 >
                   {section.title}

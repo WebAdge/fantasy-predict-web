@@ -77,7 +77,7 @@ const Home = () => {
               <h3 className="text-[22px] leading-[28px] font-bold mb-3 mt-5">
                 World Cup Tornament
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-300">
                 Predict the scores of the matches and climb up the leaderboard!
               </p>
               <div

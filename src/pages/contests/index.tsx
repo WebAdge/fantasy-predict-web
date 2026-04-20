@@ -68,8 +68,8 @@ const Challenges = () => {
               <div className="rounded-3xl p-5 bg-white my-5 border-[1px] border-gray-200" key={contest._id}>
                 <div className="flex justify-between">
                   <div>
-                    <h2 className="font-bold text-xl">{contest.name}</h2>
-                    <p className="text-xs italic">
+                    <h2 className="font-bold text-xl text-black">{contest.name}</h2>
+                    <p className="text-xs italic text-black">
                       {contest.config.amount
                         ? `Join with ${currencyFormatter(
                             contest.config.amount,
@@ -90,7 +90,7 @@ const Challenges = () => {
                     </Button>
                   )}
                 </div>
-                <p className="mt-4">
+                <p className="mt-4 text-black text-sm">
                   {contest.description ||
                     "No description provided for this contest."}
                 </p>

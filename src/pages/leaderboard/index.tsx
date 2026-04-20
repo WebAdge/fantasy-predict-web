@@ -34,7 +34,7 @@ const Leaderboard = () => {
           <Skeleton />
         </div>
       ) : (
-        <div className="mt-5">
+        <div className="mt-5 mb-20">
           {data?.filter(d => d.name === "Global")?.map((contest) => (
             <div
               className="rounded-2xl p-5 bg-white my-2 border-[1px] border-gray-200"
@@ -57,13 +57,13 @@ const Leaderboard = () => {
                     </p>
                   </div>
                   <div>
-                    <h2 className="font-bold text-xl">{contest.name}</h2>
+                    <h2 className="font-bold text-xl text-black">{contest.name}</h2>
                     <div className="text-xs italic flex gap-2">
                       {/* @ts-ignore */}
-                      <p>Competion: ALL</p>
-                      <p>Members: {userData?.totalDocs}</p>
+                      <p className="text-black">Competion: ALL</p>
+                      <p className="text-black">Members: {userData?.totalDocs}</p>
                       {contest.config.paid ? (
-                        <p>Fee: {contest.config.amount}</p>
+                        <p className="text-black">Fee: {contest.config.amount}</p>
                       ) : null}
                     </div>
                   </div>
@@ -110,8 +110,9 @@ const Leaderboard = () => {
                     </p>
                   </div>
                   <div>
-                    <h2 className="font-bold text-xl">{contest.name}</h2>
-                    <div className="text-xs italic flex gap-2">
+                    
+                    <h2 className="font-bold text-xl text-black">{contest.name}</h2>
+                    <div className="text-xs italic flex gap-2 text-black">
                       {/* @ts-ignore */}
                       <p>Competion: {contest.competition?.code}</p>
                       <p>Members: {contest.totalMembers}</p>

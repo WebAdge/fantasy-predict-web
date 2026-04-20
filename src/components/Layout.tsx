@@ -26,7 +26,8 @@ export default Layout;
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700">
+    // <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700">
+    <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-gray-700">
       <div className="flex justify-around items-center py-3">
         <div
           onClick={() => navigate("/home")}
@@ -80,7 +81,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="sticky top-0 z-50 w-full">
-      <div className="flex justify-between w-full bg-blue-950 p-5">
+      {/* <div className="flex justify-between w-full bg-blue-950 p-5"> */}
+      <div className="flex justify-between w-full bg-black p-5">
         {/* Home */}
         <div
           className="cursor-pointer flex gap-1 ml-5"

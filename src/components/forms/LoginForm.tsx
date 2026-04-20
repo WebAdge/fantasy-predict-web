@@ -31,7 +31,7 @@ const LoginForm = () => {
       )}
       <Form.Item
         name="to"
-        label={<p className="navy-color">Email Address or Username</p>}
+        label={<p className="text-white">Email Address or Username</p>}
         rules={[
           { required: true, message: "Enter a valid email or username" },
         ]}
@@ -41,7 +41,7 @@ const LoginForm = () => {
 
       <Form.Item
         name="password"
-        label={<p className="navy-color">Password</p>}
+        label={<p className="text-white">Password</p>}
         rules={[{ required: true, message: "Enter password" }]}
       >
         <Input type="password" Password={true} />
@@ -59,7 +59,7 @@ const LoginForm = () => {
       </Form.Item>
 
       <p
-        className="navy-color text-center cursor-pointer"
+        className="text-white text-center cursor-pointer"
         onClick={() => navigate("/forget-password")}
       >
         Forget Password? Reset it

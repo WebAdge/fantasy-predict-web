@@ -131,13 +131,13 @@ const DesktopView = ({
     <>
       <div className="grid place-content-center h-screen">
         <div className="py-5 px-10 w-[500px]">
-          <p className="mt-5 font-bold text-[24px] text-[#000]">
+          <p className="mt-5 font-bold text-[24px]">
             Login
           </p>
 
           <div className="mt-5">
             {query[0]?.reset && (
-              <p className="text-black text-center my-2">
+              <p className="text-white text-center my-2">
                 You've reset your password. Kindly login
               </p>
             )}
