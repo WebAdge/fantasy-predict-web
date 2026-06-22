@@ -7,16 +7,16 @@ import { getSinglePool } from "../../server/pools";
 import Loading from "../../components/Loading";
 import { Activity, ArrowRight, FilePlus, UserPlus } from "react-feather";
 
-const menus = (contest: IPool) => [
+const menus = (contest: IPool, name: string) => [
   {
     icon: <UserPlus size={24} />,
-    name: 'Invite Players', 
-    link: "",
+    name: 'Invite Players',
+    link: `/pool-invite/${name}/${contest._id}`,
   },
   {
     icon: <FilePlus size={24} />,
     name: "Manage Players",
-    link: "",
+    link: `/pool-manage-players/${name}/${contest._id}`,
   },
   {
     icon: <Activity size={24} />,
@@ -45,7 +45,7 @@ const ManagePool = () => {
       ) : (
         data && (
           <div className="mt-10 flex flex-col gap-7">
-            {menus(data).map((menu) => (
+            {menus(data, name || "").map((menu) => (
               <div key={menu.name} className="flex justify-between border-[1px] p-5 rounded-lg" onClick={() => navigate(menu.link)}>
                 <div className="flex gap-3">
                   {menu.icon}
