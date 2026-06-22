@@ -23,6 +23,8 @@ import Scores from "../pages/dashboard/Scores";
 import ContestDetail from "../pages/contests/ContestDetail";
 import LeaderboardPool from "../pages/leaderboard/LeaderboardPool";
 import ManagePool from "../pages/contests/ManagePool";
+import InviteToPool from "../pages/contests/InviteToPool";
+import ManagePlayer from "../pages/contests/ManagePlayer";
 import MatchDayPrediction from "../pages/dashboard/MatchDayPrediction";
 
 
@@ -56,6 +58,8 @@ const PrivateRoutes = () => {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/pool-detail/:name/:id" element={<ContestDetail />} />
           <Route path="/pool-view/:name/:id" element={<ManagePool />} />
+          <Route path="/pool-invite/:name/:id" element={<InviteToPool />} />
+          <Route path="/pool-manage-players/:name/:id" element={<ManagePlayer />} />
           <Route path="/leaderboard/:name/:id/:free" element={<LeaderboardPool />} />
         </Route>
         {/* routes outside the sidebar or dashboard ends here */}

@@ -94,7 +94,7 @@ const MobileView = ({
 }: Props) => {
   return (
     <OnboardingLayout>
-      <h2 className="my-5 text-[24px] font-bold text-[#000]">
+      <h2 className="my-5 text-[24px] font-bold text-[#fff]">
         Login
       </h2>
 

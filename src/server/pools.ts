@@ -58,3 +58,24 @@ export const fetchCompetitionLeaderboard = async (competition: string) => {
     .catch((e) => next(e));
   return data?.data;
 };
+
+export const fetchPoolMembers = async (poolId: string) => {
+  const { data } = await instance()
+    .get("/v1/pool-members", { params: { pool: poolId } })
+    .catch((e) => next(e));
+  return data?.data?.docs ?? data?.data ?? [];
+};
+
+export const expelMember = async (values: { memberId: string }) => {
+  const { data } = await instance()
+    .delete(`/v1/pool-members/${values.memberId}`)
+    .catch((e) => next(e));
+  return data?.data;
+};
+
+export const updateMemberStatus = async (values: { memberId: string, status: string }) => {
+  const { data } = await instance()
+    .patch(`/v1/pool-members/${values.memberId}`, { status: values.status })
+    .catch((e) => next(e));
+  return data?.data;
+};
